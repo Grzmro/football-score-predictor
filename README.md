@@ -38,8 +38,6 @@ Moduł wykorzystujący model **Random Forest** do przewidywania prawdopodobieńs
 - Remisu
 - Zwycięstwa gości
 
-Model jest trenowany "w locie" na dostępnych danych historycznych dla wybranej ligi, uwzględniając zaawansowane cechy (rolling averages, formę zespołów).
-
 ## Wykorzystanie Programistyczne
 
 ### Pobieranie danych (`LeagueLoader`):
