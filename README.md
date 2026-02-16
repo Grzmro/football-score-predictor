@@ -1,46 +1,46 @@
 # Football Score Predictor
 
-Narzędzie do analizy statystyk piłkarskich oraz przewidywania wyników meczów na podstawie danych historycznych i uczenia maszynowego.
+A tool for analyzing football statistics and predicting match results based on historical data and machine learning.
 
-## Uruchamianie
+## Usage
 
-Głównym punktem wejścia do aplikacji jest plik `main.py`, który uruchamia interfejs graficzny oparty na bibliotece **Streamlit**.
+The main entry point for the application is the `main.py` file, which launches the graphical interface based on the **Streamlit** library.
 
 ```bash
 python main.py
 ```
 
-## Funkcjonalności GUI
+## GUI Features
 
-Aplikacja oferuje trzy główne moduły:
+The application offers three main modules:
 
-### 1. Pobieranie Danych
+### 1. Data Download
 
-Pozwala na pobieranie najświeższych danych statystycznych z serwisu FBRef (za pośrednictwem biblioteki `soccerdata`). Możesz wybrać ligę (np. `ENG-Premier League`, `ESP-La Liga`) oraz konkretne sezony.
+Allows downloading the latest statistical data from FBRef (via the `soccerdata` library). You can select a league (e.g., `ENG-Premier League`, `ESP-La Liga`) and specific seasons.
 
-### 2. Analiza Statystyczna
+### 2. Statistical Analysis
 
-Interaktywny panel analizy danych dla drużyn i zawodników:
+Interactive data analysis dashboard for teams and players:
 
-- **Klasteryzacja Drużyn**: Grupowanie zespołów o podobnych profilach wydajnościowych za pomocą algorytmu K-Means.
-- **Efektywność (Gole vs xG)**: Porównanie rzeczywistej skuteczności z galami oczekiwanymi.
-- **Styl Gry**: Analiza zależności między posiadaniem piłki a progresją akcji.
-- **Rzuty Karne**: Udział goli z rzutów karnych w całkowitym dorobku drużyny.
-- **Profile Zawodników (Pizza Charts)**: Wizualizacja percentylowa statystyk konkretnych graczy.
-- **Krzywe Starzenia**: Analiza wpływu wieku na wydajność zawodników w lidze.
-- **Ewolucja Drużyn**: Historyczny wykres zmian kluczowych wskaźników zespołu na przestrzeni sezonów.
+- **Team Clustering**: Grouping teams with similar performance profiles using K-Means algorithm.
+- **Efficiency (Goals vs xG)**: Comparison of actual scoring efficiency against expected goals.
+- **Play Style**: Analysis of the relationship between ball possession and action progression.
+- **Penalties**: Share of penalty goals in the team's total scoring.
+- **Player Profiles (Pizza Charts)**: Percentile visualization of specific player statistics.
+- **Aging Curves**: Analysis of the impact of age on player performance in the league.
+- **Team Evolution**: Historical chart of key team metrics changes over seasons.
 
-### 3. Predykcja Meczów
+### 3. Match Prediction
 
-Moduł wykorzystujący model **Random Forest** do przewidywania prawdopodobieństwa:
+Module using a **Random Forest** model to predict the probability of:
 
-- Zwycięstwa gospodarzy
-- Remisu
-- Zwycięstwa gości
+- Home Win
+- Draw
+- Away Win
 
-## Wykorzystanie Programistyczne
+## Programmatic Usage
 
-### Pobieranie danych (`LeagueLoader`):
+### Downloading Data (`LeagueLoader`):
 
 ```python
 from src.loader import LeagueLoader
@@ -52,12 +52,12 @@ loader.download_all_data(
 )
 ```
 
-### Ładowanie i łączenie danych (`DataLoader`):
+### Loading and Merging Data (`DataLoader`):
 
 ```python
 from src.loader import DataLoader
 
-# Ładowanie statystyk podań i obrony dla Premier League
+# Loading passing and defense statistics for Premier League
 loader = DataLoader(
     seasons=["2223"],
     leagues=["Premier League"],
@@ -67,6 +67,6 @@ loader = DataLoader(
 df = loader.load_data()
 ```
 
-## Źródło Danych
+## Data Source
 
-Aplikacja korzysta z danych FBRef dostarczanych przez [soccerdata](https://soccerdata.readthedocs.io/en/latest/reference/fbref.html).
+The application uses FBRef data provided by [soccerdata](https://soccerdata.readthedocs.io/en/latest/reference/fbref.html).
